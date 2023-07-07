@@ -136,9 +136,20 @@ fHist4d2pcMixedOmegaMinus(0x0),
 fHist4d2pcMixedOmegaPlus(0x0)
 
 {
+  for(Int_t ii=0; ii<20; ii++){
+    fEMBufferCycle[ii]=kFALSE;
+  }
+  for(Int_t ii=0; ii<20; ii++){
+    fEMBufferCycle[ii]=0;
+  }
+  for(Int_t ii=0; ii<20; ii++){
+    fEMBufferSize[ii]=10;
+  }
   for(Int_t ii=0; ii<50; ii++){
-    fEMBufferEta[ii]=0;
-    fEMBufferPhi[ii]=0;
+    for(Int_t jj=0; jj<20; jj++){
+      fEMBufferEta[ii][jj]=0;
+      fEMBufferPhi[ii][jj]=0;
+    }
   }
   for(Int_t ii=0; ii<10; ii++){
     fkIntervalMinEta[ii]=0;
