@@ -30,6 +30,7 @@ class TList;
 class TH1F;
 class TH2F;
 class TH3F;
+class THnF;
 class TVector3;
 class THnSparse;
 
@@ -109,28 +110,28 @@ private:
   Int_t fkNEtaBins;
   TH2D *fHistEtaVsPtTrigger; //!
   
-  TH3D *fHist3d2pcK0Short; //!
-  TH3D *fHist3d2pcLambda; //!
-  TH3D *fHist3d2pcAntiLambda; //!
-  TH3D *fHist3d2pcXiMinus; //!
-  TH3D *fHist3d2pcXiPlus; //!
-  TH3D *fHist3d2pcOmegaMinus; //!
-  TH3D *fHist3d2pcOmegaPlus; //!
+  THnSparseD *fHist4d2pcK0Short; //!
+  THnSparseD *fHist4d2pcLambda; //!
+  THnSparseD *fHist4d2pcAntiLambda; //!
+  THnSparseD *fHist4d2pcXiMinus; //!
+  THnSparseD *fHist4d2pcXiPlus; //!
+  THnSparseD *fHist4d2pcOmegaMinus; //!
+  THnSparseD *fHist4d2pcOmegaPlus; //!
 
-  TH3D *fHist3d2pcMixedK0Short; //!
-  TH3D *fHist3d2pcMixedLambda; //!
-  TH3D *fHist3d2pcMixedAntiLambda; //!
-  TH3D *fHist3d2pcMixedXiMinus; //!
-  TH3D *fHist3d2pcMixedXiPlus; //!
-  TH3D *fHist3d2pcMixedOmegaMinus; //!
-  TH3D *fHist3d2pcMixedOmegaPlus; //!
+  THnSparseD *fHist4d2pcMixedK0Short; //!
+  THnSparseD *fHist4d2pcMixedLambda; //!
+  THnSparseD *fHist4d2pcMixedAntiLambda; //!
+  THnSparseD *fHist4d2pcMixedXiMinus; //!
+  THnSparseD *fHist4d2pcMixedXiPlus; //!
+  THnSparseD *fHist4d2pcMixedOmegaMinus; //!
+  THnSparseD *fHist4d2pcMixedOmegaPlus; //!
 
   //for event mixing
-  Bool_t fEMBufferFull;
-  Int_t fEMBufferCycle;
-  Int_t fEMBufferSize;
-  Float_t fEMBufferEta[50];
-  Float_t fEMBufferPhi[50];
+  Bool_t fEMBufferFull[20];
+  Int_t fEMBufferCycle[20];
+  Int_t fEMBufferSize[20];
+  Float_t fEMBufferEta[50][20];
+  Float_t fEMBufferPhi[50][20];
   
   AliAnalysisTaskMCPredictions2pc(const AliAnalysisTaskMCPredictions2pc&);            // not implemented
   AliAnalysisTaskMCPredictions2pc& operator=(const AliAnalysisTaskMCPredictions2pc&); // not implemented
