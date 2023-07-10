@@ -37,12 +37,12 @@ class AliAODv0;
 
 #include <Riostream.h>
 #include "TList.h"
+#include "THn.h"
 #include "TH1.h"
 #include "TH2.h"
 #include "TH3.h"
 #include "TFile.h"
 #include "THnSparse.h"
-#include <THnF.h>
 #include "TVector3.h"
 #include "TCanvas.h"
 #include "TMath.h"
@@ -137,7 +137,7 @@ fHist4d2pcMixedOmegaPlus(0x0)
 
 {
   for(Int_t ii=0; ii<20; ii++){
-    fEMBufferCycle[ii]=kFALSE;
+    fEMBufferFull[ii]=kFALSE;
   }
   for(Int_t ii=0; ii<20; ii++){
     fEMBufferCycle[ii]=0;
@@ -204,7 +204,7 @@ fHist4d2pcMixedOmegaPlus(0x0)
 
 {
   for(Int_t ii=0; ii<20; ii++){
-    fEMBufferCycle[ii]=kFALSE;
+    fEMBufferFull[ii]=kFALSE;
   }
   for(Int_t ii=0; ii<20; ii++){
     fEMBufferCycle[ii]=0;
@@ -528,7 +528,7 @@ void AliAnalysisTaskMCPredictions2pc::UserExec(Option_t *)
         Double_t geta2 = lAssociatedParticle -> Eta();
         Double_t gphi2 = lAssociatedParticle -> Phi();
         Double_t lThisPt    = lAssociatedParticle->Pt();
-        h4dAssociated[iassocSpecies]->Fill(geta2-geta, ComputeDeltaPhi(gphi,gphi2), lThisPt, lNchForward);
+        h4dAssociated[iassocSpecies]->Fill(geta2-geta, ComputeDeltaPhi(gphi,gphi2), lThisPt,lNchForward);
       }
     }
   }
@@ -564,8 +564,9 @@ void AliAnalysisTaskMCPredictions2pc::UserExec(Option_t *)
       if(!lThisParticle) continue;
 
       //Add to buffer
-      fEMBufferEta[ fEMBufferCycle ][ multiplicityIndex ] = lThisParticle->Eta();
-      fEMBufferPhi[ fEMBufferCycle ][ multiplicityIndex ] = lThisParticle->Phi();
+      
+      fEMBufferEta[fEMBufferCycle[multiplicityIndex]][multiplicityIndex] = lThisParticle->Eta();
+      fEMBufferPhi[fEMBufferCycle[multiplicityIndex]][multiplicityIndex] = lThisParticle->Phi();
       fEMBufferCycle[multiplicityIndex]++;
       if(fEMBufferCycle[multiplicityIndex]>=fEMBufferSize[multiplicityIndex]) fEMBufferFull[multiplicityIndex] = kTRUE;
       fEMBufferCycle[multiplicityIndex] = fEMBufferCycle[multiplicityIndex]%fEMBufferSize[multiplicityIndex];

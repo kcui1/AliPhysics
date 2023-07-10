@@ -24,15 +24,15 @@
 
 #ifndef AliAnalysisTaskMCPredictions2pc_H
 #define AliAnalysisTaskMCPredictions2pc_H
-
+#include "THn.h"
 class TTree;
 class TList;
 class TH1F;
 class TH2F;
 class TH3F;
-class THnF;
 class TVector3;
 class THnSparse;
+class THn;
 
 class AliESDpid;
 class AliESDtrackCuts;
@@ -110,22 +110,22 @@ private:
   Int_t fkNEtaBins;
   TH2D *fHistEtaVsPtTrigger; //!
   
-  THnSparseD *fHist4d2pcK0Short; //!
-  THnSparseD *fHist4d2pcLambda; //!
-  THnSparseD *fHist4d2pcAntiLambda; //!
-  THnSparseD *fHist4d2pcXiMinus; //!
-  THnSparseD *fHist4d2pcXiPlus; //!
-  THnSparseD *fHist4d2pcOmegaMinus; //!
-  THnSparseD *fHist4d2pcOmegaPlus; //!
+  THnF *fHist4d2pcK0Short; //!
+  THnF *fHist4d2pcLambda; //!
+  THnF *fHist4d2pcAntiLambda; //!
+  THnF *fHist4d2pcXiMinus; //!
+  THnF *fHist4d2pcXiPlus; //!
+  THnF *fHist4d2pcOmegaMinus; //!
+  THnF *fHist4d2pcOmegaPlus; //!
 
-  THnSparseD *fHist4d2pcMixedK0Short; //!
-  THnSparseD *fHist4d2pcMixedLambda; //!
-  THnSparseD *fHist4d2pcMixedAntiLambda; //!
-  THnSparseD *fHist4d2pcMixedXiMinus; //!
-  THnSparseD *fHist4d2pcMixedXiPlus; //!
-  THnSparseD *fHist4d2pcMixedOmegaMinus; //!
-  THnSparseD *fHist4d2pcMixedOmegaPlus; //!
-
+  THnF *fHist4d2pcMixedK0Short; //!
+  THnF *fHist4d2pcMixedLambda; //!
+  THnF *fHist4d2pcMixedAntiLambda; //!
+  THnF *fHist4d2pcMixedXiMinus; //!
+  THnF *fHist4d2pcMixedXiPlus; //!
+  THnF *fHist4d2pcMixedOmegaMinus; //!
+  THnF *fHist4d2pcMixedOmegaPlus; //!
+  
   //for event mixing
   Bool_t fEMBufferFull[20];
   Int_t fEMBufferCycle[20];
